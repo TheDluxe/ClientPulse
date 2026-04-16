@@ -18,7 +18,6 @@
             background-color: #f9fbfd;
         }
 
-        /* Brand colors */
         :root {
             --teal: #006D77;
             --orange: #FFB703;
@@ -32,7 +31,6 @@
             padding: 0 2rem;
         }
 
-        /* Header / Navigation */
         header {
             background: white;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
@@ -111,7 +109,6 @@
             color: white;
         }
 
-        /* Hero section */
         .hero {
             background: linear-gradient(135deg, var(--light-teal) 0%, white 100%);
             padding: 4rem 0;
@@ -137,7 +134,6 @@
         .hero-text p {
             font-size: 1.2rem;
             margin-bottom: 2rem;
-            color: #2c3e50;
         }
 
         .hero-image {
@@ -153,19 +149,6 @@
             background: #f0f2f5;
             border-radius: 12px;
             padding: 1rem;
-        }
-
-        .mock-bar {
-            background: var(--teal);
-            height: 8px;
-            width: 80%;
-            border-radius: 4px;
-            margin: 0.5rem 0;
-        }
-
-        /* Sections */
-        section {
-            padding: 4rem 0;
         }
 
         .section-title {
@@ -190,14 +173,12 @@
             flex: 1;
             min-width: 250px;
             text-align: center;
-            transition: 0.2s;
             border-top: 5px solid var(--teal);
         }
 
         .pricing-card.popular {
             border-top-color: var(--orange);
             transform: scale(1.02);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
 
         .price {
@@ -205,11 +186,6 @@
             font-weight: bold;
             color: var(--teal);
             margin: 1rem 0;
-        }
-
-        .price span {
-            font-size: 1rem;
-            font-weight: normal;
         }
 
         .feature-list {
@@ -221,7 +197,6 @@
             margin: 0.5rem 0;
         }
 
-        /* Demo area */
         .demo-area {
             background: var(--light-teal);
             border-radius: 30px;
@@ -229,15 +204,35 @@
             text-align: center;
         }
 
+        .demo-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 400px;
+            margin: 1rem auto;
+            text-align: left;
+        }
+
+        .demo-form label {
+            font-weight: bold;
+        }
+
+        .demo-form input {
+            padding: 0.6rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
         .mock-report-btn {
             background: var(--teal);
             color: white;
             border: none;
-            padding: 1rem 2rem;
-            font-size: 1.2rem;
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
             border-radius: 40px;
             cursor: pointer;
-            margin-top: 1rem;
+            margin-top: 0.5rem;
         }
 
         footer {
@@ -250,7 +245,6 @@
         @media (max-width: 768px) {
             .hero-text h1 { font-size: 2rem; }
             nav { flex-direction: column; gap: 1rem; }
-            .nav-links a { margin: 0 1rem; }
         }
     </style>
 </head>
@@ -281,12 +275,11 @@
             <div class="mock-dashboard">
                 <div style="font-weight: bold; margin-bottom: 1rem;">📈 Live Preview (Mock)</div>
                 <div>Google Analytics Sessions: <strong>12,450</strong> <span style="color: green;">↑8%</span></div>
-                <div class="mock-bar"></div>
+                <div style="background: var(--teal); height: 8px; width: 80%; border-radius: 4px; margin: 0.5rem 0;"></div>
                 <div>Facebook Reach: <strong>8,230</strong></div>
-                <div class="mock-bar" style="width: 60%;"></div>
+                <div style="background: var(--teal); height: 8px; width: 60%; border-radius: 4px; margin: 0.5rem 0;"></div>
                 <div>Instagram Followers: <strong>+340</strong></div>
-                <div class="mock-bar" style="width: 40%;"></div>
-                <button class="mock-report-btn" id="mockGenerateBtn" style="margin-top: 1rem; padding: 0.5rem 1rem; font-size: 1rem;">Generate Report (Mock)</button>
+                <div style="background: var(--teal); height: 8px; width: 40%; border-radius: 4px; margin: 0.5rem 0;"></div>
             </div>
         </div>
     </div>
@@ -328,7 +321,7 @@
                     <li>✓ Email support</li>
                     <li>✓ 14-day free trial</li>
                 </ul>
-                <a href="#" class="btn-outline btn">Start free trial</a>
+                <a href="#" class="btn-outline btn mock-trial">Start free trial</a>
             </div>
             <div class="pricing-card popular">
                 <h3>Professional <span style="background: var(--orange); padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.8rem;">Most Popular</span></h3>
@@ -339,7 +332,7 @@
                     <li>✓ Priority email support</li>
                     <li>✓ 14-day free trial</li>
                 </ul>
-                <a href="#" class="btn">Start free trial</a>
+                <a href="#" class="btn mock-trial">Start free trial</a>
             </div>
             <div class="pricing-card">
                 <h3>Agency</h3>
@@ -350,7 +343,7 @@
                     <li>✓ WhatsApp support</li>
                     <li>✓ 14-day free trial</li>
                 </ul>
-                <a href="#" class="btn-outline btn">Contact sales</a>
+                <a href="#" class="btn-outline btn mock-trial">Contact sales</a>
             </div>
         </div>
     </div>
@@ -358,11 +351,21 @@
 
 <section id="demo">
     <div class="container">
-        <h2 class="section-title">Try the Mock Report Generator</h2>
+        <h2 class="section-title">Generate Your Own Mock Report</h2>
         <div class="demo-area">
-            <p style="font-size: 1.2rem;">Click the button below to simulate generating a branded PDF report for a client.</p>
-            <button id="demoReportBtn" class="mock-report-btn" style="background: var(--orange); color: #1a2c3e;">📄 Generate Sample Report</button>
-            <p style="margin-top: 1rem; font-size: 0.9rem;">(Mock demo – downloads a sample PDF to show what ClientPulse produces)</p>
+            <p>Enter a few details to see how ClientPulse creates a branded PDF report.</p>
+            <div class="demo-form">
+                <label>📋 Client Name:</label>
+                <input type="text" id="clientName" placeholder="e.g., Kingston Digital" value="Kingston Digital">
+                
+                <label>📅 Reporting Period:</label>
+                <input type="text" id="period" placeholder="e.g., March 2026" value="March 2026">
+                
+                <label>📊 Key Metric (e.g., Sessions):</label>
+                <input type="text" id="metricValue" placeholder="e.g., 12,450 sessions" value="12,450 sessions">
+            </div>
+            <button id="generateReportBtn" class="mock-report-btn">📄 Generate PDF Report</button>
+            <p style="margin-top: 1rem; font-size: 0.9rem;">(Opens a new window with your custom report – ready to print or save as PDF)</p>
         </div>
     </div>
 </section>
@@ -371,68 +374,138 @@
     <div class="container">
         <p>© 2026 ClientPulse – Simple Reports for Small Marketing Agencies</p>
         <p>📍 Manchester, Jamaica | 📧 clientpulse@gmail.com | 📞 (876) 555-PULSE</p>
-        <p style="margin-top: 0.5rem;">Follow us: <a href="#" style="color: var(--orange);">Instagram</a> | <a href="#" style="color: var(--orange);">Facebook</a></p>
+        <p>Follow us: <a href="#" style="color: var(--orange);">Instagram</a> | <a href="#" style="color: var(--orange);">Facebook</a></p>
     </div>
 </footer>
 
 <script>
-    // Mock PDF generation – creates a simple downloadable PDF using jsPDF library (or just a message)
-    // We'll use a simple approach: open a new window with a mock report preview, or trigger download of a pre-made sample.
-    // Since we don't want external libraries, we'll create a data URL with HTML content that looks like a report.
-    function generateMockPDF() {
-        // Create a simple HTML report that the user can print as PDF or just view
+    function generateCustomPDF() {
+        const clientName = document.getElementById('clientName').value || "Client";
+        const period = document.getElementById('period').value || "Current Period";
+        const metricValue = document.getElementById('metricValue').value || "N/A";
+
+        // Create a styled HTML report that uses the user's inputs
         const reportHTML = `
             <!DOCTYPE html>
             <html>
-            <head><title>ClientPulse Report - Kingston Digital</title>
-            <style>
-                body { font-family: Arial, sans-serif; padding: 2rem; max-width: 800px; margin: auto; }
-                .header { border-bottom: 3px solid #006D77; margin-bottom: 1rem; }
-                .logo { color: #006D77; font-size: 1.8rem; font-weight: bold; }
-                .metrics { display: flex; gap: 1rem; margin: 2rem 0; }
-                .card { background: #f5f5f5; padding: 1rem; border-radius: 8px; flex:1; text-align: center; }
-                .chart-placeholder { background: #e0e0e0; height: 150px; margin: 1rem 0; display: flex; align-items: center; justify-content: center; }
-                footer { margin-top: 2rem; font-size: 0.8rem; color: gray; text-align: center; }
-            </style>
+            <head>
+                <title>ClientPulse Report - ${clientName}</title>
+                <style>
+                    body {
+                        font-family: 'Segoe UI', Arial, sans-serif;
+                        padding: 2rem;
+                        max-width: 800px;
+                        margin: auto;
+                        color: #1a2c3e;
+                    }
+                    .header {
+                        border-bottom: 3px solid #006D77;
+                        margin-bottom: 1.5rem;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: baseline;
+                    }
+                    .logo {
+                        color: #006D77;
+                        font-size: 1.8rem;
+                        font-weight: bold;
+                    }
+                    .client-info {
+                        background: #e6f4f5;
+                        padding: 1rem;
+                        border-radius: 12px;
+                        margin: 1rem 0;
+                    }
+                    .metric-card {
+                        background: white;
+                        border: 1px solid #ddd;
+                        border-radius: 12px;
+                        padding: 1rem;
+                        margin: 1rem 0;
+                        text-align: center;
+                        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+                    }
+                    .metric-value {
+                        font-size: 2rem;
+                        font-weight: bold;
+                        color: #006D77;
+                    }
+                    .chart-placeholder {
+                        background: #f0f2f5;
+                        height: 150px;
+                        margin: 1rem 0;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        border-radius: 12px;
+                        color: #666;
+                    }
+                    footer {
+                        margin-top: 2rem;
+                        font-size: 0.8rem;
+                        color: gray;
+                        text-align: center;
+                        border-top: 1px solid #eee;
+                        padding-top: 1rem;
+                    }
+                    button.print-btn {
+                        background: #006D77;
+                        color: white;
+                        border: none;
+                        padding: 0.5rem 1rem;
+                        border-radius: 30px;
+                        cursor: pointer;
+                        margin-bottom: 1rem;
+                    }
+                </style>
             </head>
             <body>
+                <button class="print-btn" onclick="window.print()">🖨️ Save as PDF / Print</button>
                 <div class="header">
                     <div class="logo">ClientPulse</div>
-                    <p>Client: Kingston Digital | Report Period: March 2026</p>
+                    <div>Generated: ${new Date().toLocaleDateString()}</div>
+                </div>
+                <div class="client-info">
+                    <strong>Client:</strong> ${clientName}<br>
+                    <strong>Reporting Period:</strong> ${period}
                 </div>
                 <h2>Performance Summary</h2>
-                <div class="metrics">
-                    <div class="card"><strong>Google Analytics Sessions</strong><br>12,450<br>↑8% vs last month</div>
-                    <div class="card"><strong>Facebook Reach</strong><br>8,230<br>↑12%</div>
-                    <div class="card"><strong>Instagram Followers</strong><br>+340<br>↑5%</div>
+                <div class="metric-card">
+                    <div>Key Metric (from your input)</div>
+                    <div class="metric-value">${metricValue}</div>
                 </div>
-                <div class="chart-placeholder">📊 [Automated chart from Google Analytics]</div>
-                <p><em>This is a sample report generated by ClientPulse. Connect your own data to see real metrics.</em></p>
-                <footer>ClientPulse – Simple Reports | clientpulse@gmail.com</footer>
-                <script>window.print();<\/script>
+                <div class="chart-placeholder">
+                    📊 [Automated chart from Google Analytics would appear here]
+                </div>
+                <p><em>This is a sample report generated by ClientPulse based on your inputs. The real product pulls live data from Google Analytics, Facebook, Instagram and automatically creates charts.</em></p>
+                <footer>
+                    ClientPulse – Simple Reports for Small Marketing Agencies<br>
+                    clientpulse@gmail.com | Manchester, Jamaica
+                </footer>
+                <script>
+                    // Auto-scroll to top
+                    window.scrollTo(0,0);
+                <\/script>
             </body>
             </html>
         `;
-        const blob = new Blob([reportHTML], {type: 'text/html'});
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'ClientPulse_Sample_Report.html'; // downloads as HTML, user can open/print to PDF
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
+
+        // Open a new window and write the HTML
+        const newWindow = window.open();
+        newWindow.document.write(reportHTML);
+        newWindow.document.close();
     }
 
-    // Attach event listeners
-    document.getElementById('demoReportBtn').addEventListener('click', generateMockPDF);
-    document.getElementById('mockGenerateBtn').addEventListener('click', generateMockPDF);
+    // Attach event listener
+    document.getElementById('generateReportBtn').addEventListener('click', generateCustomPDF);
+
+    // Mock sign-in and trial buttons
     document.getElementById('mockLogin').addEventListener('click', (e) => {
         e.preventDefault();
         alert('Mock login: This is a demo. In the real product, you would connect your Google Analytics account.');
     });
-    // Also attach to any "Start free trial" buttons to show mock message
-    const trialBtns = document.querySelectorAll('.pricing-card .btn, .pricing-card .btn-outline');
+
+    const trialBtns = document.querySelectorAll('.mock-trial');
     trialBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.preventDefault();
