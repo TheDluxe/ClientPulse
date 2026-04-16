@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClientPulse – Simple Reports for Small Marketing Agencies</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #1a2c3e;
+            background-color: #f9fbfd;
+        }
+
+        /* Brand colors */
+        :root {
+            --teal: #006D77;
+            --orange: #FFB703;
+            --light-teal: #e6f4f5;
+            --dark-text: #1a2c3e;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header / Navigation */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--teal);
+        }
+
+        .logo span {
+            background: var(--teal);
+            color: white;
+            width: 32px;
+            height: 32px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            font-size: 1.2rem;
+        }
+
+        .nav-links a {
+            margin-left: 2rem;
+            text-decoration: none;
+            color: var(--dark-text);
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--orange);
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--orange);
+            color: #1a2c3e;
+            padding: 0.7rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn:hover {
+            background: #e5a400;
+            transform: scale(1.02);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--teal);
+            color: var(--teal);
+        }
+
+        .btn-outline:hover {
+            background: var(--teal);
+            color: white;
+        }
+
+        /* Hero section */
+        .hero {
+            background: linear-gradient(135deg, var(--light-teal) 0%, white 100%);
+            padding: 4rem 0;
+        }
+
+        .hero-grid {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 2.8rem;
+            color: var(--teal);
+            margin-bottom: 1rem;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+        }
+
+        .hero-image {
+            flex: 1;
+            background: white;
+            padding: 1rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 30px -10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .mock-dashboard {
+            background: #f0f2f5;
+            border-radius: 12px;
+            padding: 1rem;
+        }
+
+        .mock-bar {
+            background: var(--teal);
+            height: 8px;
+            width: 80%;
+            border-radius: 4px;
+            margin: 0.5rem 0;
+        }
+
+        /* Sections */
+        section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--teal);
+            margin-bottom: 2rem;
+        }
+
+        .pricing-grid {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+            transition: 0.2s;
+            border-top: 5px solid var(--teal);
+        }
+
+        .pricing-card.popular {
+            border-top-color: var(--orange);
+            transform: scale(1.02);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .price {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: var(--teal);
+            margin: 1rem 0;
+        }
+
+        .price span {
+            font-size: 1rem;
+            font-weight: normal;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .feature-list li {
+            margin: 0.5rem 0;
+        }
+
+        /* Demo area */
+        .demo-area {
+            background: var(--light-teal);
+            border-radius: 30px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .mock-report-btn {
+            background: var(--teal);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border-radius: 40px;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        footer {
+            background: var(--dark-text);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-text h1 { font-size: 2rem; }
+            nav { flex-direction: column; gap: 1rem; }
+            .nav-links a { margin: 0 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <div class="logo">
+            <span>📊</span> ClientPulse
+        </div>
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#demo">Demo</a>
+            <a href="#" class="btn-outline btn" id="mockLogin">Sign In</a>
+        </div>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="container hero-grid">
+        <div class="hero-text">
+            <h1>Simple Reports for Small Marketing Agencies</h1>
+            <p>Stop wasting 3–5 hours every Friday copying data. One button, branded PDF, 2 minutes.</p>
+            <a href="#demo" class="btn">Try Demo →</a>
+        </div>
+        <div class="hero-image">
+            <div class="mock-dashboard">
+                <div style="font-weight: bold; margin-bottom: 1rem;">📈 Live Preview (Mock)</div>
+                <div>Google Analytics Sessions: <strong>12,450</strong> <span style="color: green;">↑8%</span></div>
+                <div class="mock-bar"></div>
+                <div>Facebook Reach: <strong>8,230</strong></div>
+                <div class="mock-bar" style="width: 60%;"></div>
+                <div>Instagram Followers: <strong>+340</strong></div>
+                <div class="mock-bar" style="width: 40%;"></div>
+                <button class="mock-report-btn" id="mockGenerateBtn" style="margin-top: 1rem; padding: 0.5rem 1rem; font-size: 1rem;">Generate Report (Mock)</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="features">
+    <div class="container">
+        <h2 class="section-title">How It Works</h2>
+        <div style="display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center;">
+            <div style="text-align: center; flex:1; min-width: 200px;">
+                <div style="font-size: 3rem;">🔌</div>
+                <h3>1. Connect</h3>
+                <p>One click to link Google Analytics</p>
+            </div>
+            <div style="text-align: center; flex:1;">
+                <div style="font-size: 3rem;">📸</div>
+                <h3>2. Upload</h3>
+                <p>Screenshots from Facebook/Instagram</p>
+            </div>
+            <div style="text-align: center; flex:1;">
+                <div style="font-size: 3rem;">📄</div>
+                <h3>3. Generate</h3>
+                <p>Branded PDF report in 2 minutes</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="pricing">
+    <div class="container">
+        <h2 class="section-title">Simple Pricing, No Surprises</h2>
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h3>Starter</h3>
+                <div class="price">JMD 3,000<span>/mo</span></div>
+                <ul class="feature-list">
+                    <li>✓ Up to 3 clients</li>
+                    <li>✓ Basic charts</li>
+                    <li>✓ Email support</li>
+                    <li>✓ 14-day free trial</li>
+                </ul>
+                <a href="#" class="btn-outline btn">Start free trial</a>
+            </div>
+            <div class="pricing-card popular">
+                <h3>Professional <span style="background: var(--orange); padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.8rem;">Most Popular</span></h3>
+                <div class="price">JMD 8,000<span>/mo</span></div>
+                <ul class="feature-list">
+                    <li>✓ Up to 10 clients</li>
+                    <li>✓ Google Analytics integration</li>
+                    <li>✓ Priority email support</li>
+                    <li>✓ 14-day free trial</li>
+                </ul>
+                <a href="#" class="btn">Start free trial</a>
+            </div>
+            <div class="pricing-card">
+                <h3>Agency</h3>
+                <div class="price">JMD 15,000<span>/mo</span></div>
+                <ul class="feature-list">
+                    <li>✓ Unlimited clients</li>
+                    <li>✓ Custom branding</li>
+                    <li>✓ WhatsApp support</li>
+                    <li>✓ 14-day free trial</li>
+                </ul>
+                <a href="#" class="btn-outline btn">Contact sales</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="demo">
+    <div class="container">
+        <h2 class="section-title">Try the Mock Report Generator</h2>
+        <div class="demo-area">
+            <p style="font-size: 1.2rem;">Click the button below to simulate generating a branded PDF report for a client.</p>
+            <button id="demoReportBtn" class="mock-report-btn" style="background: var(--orange); color: #1a2c3e;">📄 Generate Sample Report</button>
+            <p style="margin-top: 1rem; font-size: 0.9rem;">(Mock demo – downloads a sample PDF to show what ClientPulse produces)</p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <p>© 2026 ClientPulse – Simple Reports for Small Marketing Agencies</p>
+        <p>📍 Manchester, Jamaica | 📧 clientpulse@gmail.com | 📞 (876) 555-PULSE</p>
+        <p style="margin-top: 0.5rem;">Follow us: <a href="#" style="color: var(--orange);">Instagram</a> | <a href="#" style="color: var(--orange);">Facebook</a></p>
+    </div>
+</footer>
+
+<script>
+    // Mock PDF generation – creates a simple downloadable PDF using jsPDF library (or just a message)
+    // We'll use a simple approach: open a new window with a mock report preview, or trigger download of a pre-made sample.
+    // Since we don't want external libraries, we'll create a data URL with HTML content that looks like a report.
+    function generateMockPDF() {
+        // Create a simple HTML report that the user can print as PDF or just view
+        const reportHTML = `
+            <!DOCTYPE html>
+            <html>
+            <head><title>ClientPulse Report - Kingston Digital</title>
+            <style>
+                body { font-family: Arial, sans-serif; padding: 2rem; max-width: 800px; margin: auto; }
+                .header { border-bottom: 3px solid #006D77; margin-bottom: 1rem; }
+                .logo { color: #006D77; font-size: 1.8rem; font-weight: bold; }
+                .metrics { display: flex; gap: 1rem; margin: 2rem 0; }
+                .card { background: #f5f5f5; padding: 1rem; border-radius: 8px; flex:1; text-align: center; }
+                .chart-placeholder { background: #e0e0e0; height: 150px; margin: 1rem 0; display: flex; align-items: center; justify-content: center; }
+                footer { margin-top: 2rem; font-size: 0.8rem; color: gray; text-align: center; }
+            </style>
+            </head>
+            <body>
+                <div class="header">
+                    <div class="logo">ClientPulse</div>
+                    <p>Client: Kingston Digital | Report Period: March 2026</p>
+                </div>
+                <h2>Performance Summary</h2>
+                <div class="metrics">
+                    <div class="card"><strong>Google Analytics Sessions</strong><br>12,450<br>↑8% vs last month</div>
+                    <div class="card"><strong>Facebook Reach</strong><br>8,230<br>↑12%</div>
+                    <div class="card"><strong>Instagram Followers</strong><br>+340<br>↑5%</div>
+                </div>
+                <div class="chart-placeholder">📊 [Automated chart from Google Analytics]</div>
+                <p><em>This is a sample report generated by ClientPulse. Connect your own data to see real metrics.</em></p>
+                <footer>ClientPulse – Simple Reports | clientpulse@gmail.com</footer>
+                <script>window.print();<\/script>
+            </body>
+            </html>
+        `;
+        const blob = new Blob([reportHTML], {type: 'text/html'});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'ClientPulse_Sample_Report.html'; // downloads as HTML, user can open/print to PDF
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    }
+
+    // Attach event listeners
+    document.getElementById('demoReportBtn').addEventListener('click', generateMockPDF);
+    document.getElementById('mockGenerateBtn').addEventListener('click', generateMockPDF);
+    document.getElementById('mockLogin').addEventListener('click', (e) => {
+        e.preventDefault();
+        alert('Mock login: This is a demo. In the real product, you would connect your Google Analytics account.');
+    });
+    // Also attach to any "Start free trial" buttons to show mock message
+    const trialBtns = document.querySelectorAll('.pricing-card .btn, .pricing-card .btn-outline');
+    trialBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            alert('Mock signup: 14-day free trial. No credit card required. (This is a demo)');
+        });
+    });
+</script>
+</body>
+</html>
